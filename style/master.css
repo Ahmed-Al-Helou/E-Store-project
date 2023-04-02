@@ -288,6 +288,7 @@ input{
 .card{
     border:1px solid #fff;
     background-color: #111;
+    width: 250px;
 }
 
 #img-card{
@@ -300,6 +301,8 @@ input{
     font-size: 1.2rem;
     text-transform: uppercase;
     margin: 3px 5px; 
+    overflow-wrap: break-word;
+
 }
 
 .description-card{

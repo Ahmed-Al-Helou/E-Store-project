@@ -58,7 +58,7 @@ if(localStorage.product !=null ){
     dataProduct=[];
 }
 
-btnAdd.onclick = function(){
+btnAdd.onclick = ()=>{
     let newProduct={
         title : title.value,
         category : category.value,
@@ -185,7 +185,7 @@ function searchProduct(value){
                 <span class="price-card">${dataProduct[i].price}</span>
                 <i onclick="deleteProduct(${i})" class='bx bxs-trash-alt' id="delete-item"></i>
                 <i onclick="updateProduct(${i})" class='bx bx-edit-alt' id="update-item"></i>
-                <i class='bx bxs-cart-add' id="add-to-cart"></i>
+                <i onclick="addProductToCart(${i})" class='bx bxs-cart-add' id="add-to-cart"></i>
                 </div>
                 
                 `
@@ -207,7 +207,7 @@ function searchProduct(value){
                 <span class="price-card">${dataProduct[i].price}</span>
                 <i onclick="deleteProduct(${i})" class='bx bxs-trash-alt' id="delete-item"></i>
                 <i onclick="updateProduct(${i})" class='bx bx-edit-alt' id="update-item"></i>
-                <i class='bx bxs-cart-add' id="add-to-cart"></i>
+                <i onclick="addProductToCart(${i})" class='bx bxs-cart-add' id="add-to-cart"></i>
                 </div>
                 
                 `
