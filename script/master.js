@@ -1,25 +1,25 @@
-let iconSearch = document.getElementById("icon-search");
-let iconAdd = document.getElementById("icon-add");
-let iconCart = document.getElementById("icon-cart");
+const iconSearch = document.getElementById("icon-search");
+const iconAdd = document.getElementById("icon-add");
+const iconCart = document.getElementById("icon-cart");
 
-let addItem = document.querySelector(".add-item");
-let cart = document.querySelector(".cart");
+const addItem = document.querySelector(".add-item");
+const cart = document.querySelector(".cart");
 
-let closeAdd = document.getElementById("add-close");
-let closeCart = document.getElementById("cart-close");
-let closeSearch =document.getElementById("search-close");
+const closeAdd = document.getElementById("add-close");
+const closeCart = document.getElementById("cart-close");
+const closeSearch =document.getElementById("search-close");
 
-let search = document.querySelector(".search");
+const search = document.querySelector(".search");
 
-let title = document.getElementById("add-title");
-let category = document.getElementById("add-category");
-let description = document.getElementById("add-description");
-let price = document.getElementById("add-price");
-let count = document.getElementById("add-count");
-let img = document.getElementById("add-img");
-let btnAdd = document.getElementById("btn-add-item");
+const title = document.getElementById("add-title");
+const category = document.getElementById("add-category");
+const description = document.getElementById("add-description");
+const price = document.getElementById("add-price");
+const count = document.getElementById("add-count");
+const img = document.getElementById("add-img");
+const btnAdd = document.getElementById("btn-add-item");
 
-let btnDelete =document.getElementById("delete-item");
+const btnDelete =document.getElementById("delete-item");
 
 let index;
 let mood="Add";
@@ -111,22 +111,8 @@ function clearData(){
 function showProduct(){
     let content="";
     for(let i=0 ; i < dataProduct.length ; i++){
-        content +=`
+        content += displayCard(dataProduct[i],i)
         
-        <div class="card"> 
-        <img src="${dataProduct[i].img}" alt="img" id="img-card"> 
-        <h3 class="title-card">${dataProduct[i].title}</h3>
-        <div class="details-card">
-            <p class="description-card">${dataProduct[i].description} </p>
-            <p class="category-card">${dataProduct[i].category}</p>
-        </div>
-        <span class="price-card">${dataProduct[i].price}</span>
-        <i onclick="deleteProduct(${i})" class='bx bxs-trash-alt' id="delete-item"></i>
-        <i onclick="updateProduct(${i})" class='bx bx-edit-alt' id="update-item"></i>
-        <i onclick="addProductToCart(${i})" class='bx bxs-cart-add' id="add-to-cart"></i>
-        </div>
-        
-        `
         
     }
 
@@ -165,7 +151,24 @@ function updateProduct(i){
 let searchMood;
 
 
+function displayCard(ob,i){
+    return `
+    <div class="card"> 
+    <img src="${ob.img}" alt="img" id="img-card"> 
+    <h3 class="title-card">${ob.title}</h3>
+    <div class="details-card">
+        <p class="description-card">${ob.description} </p>
+        <p class="category-card">${ob.category}</p>
+    </div>
+    <span class="price-card">${ob.price}</span>
+    <i onclick="deleteProduct(${i})" class='bx bxs-trash-alt' id="delete-item"></i>
+    <i onclick="updateProduct(${i})" class='bx bx-edit-alt' id="update-item"></i>
+    <i onclick="addProductToCart(${i})" class='bx bxs-cart-add' id="add-to-cart"></i>
+    </div>
 
+
+    `;
+}
 function searchProduct(value){
     let content="";
     
@@ -173,44 +176,16 @@ function searchProduct(value){
 
         for(let i=0 ; i< dataProduct.length ; i++){
             if(dataProduct[i].title.includes(value.toLowerCase())){
-                content +=`
-        
-                <div class="card"> 
-                <img src="${dataProduct[i].img}" alt="img" id="img-card"> 
-                <h3 class="title-card">${dataProduct[i].title}</h3>
-                <div class="details-card">
-                    <p class="description-card">${dataProduct[i].description} </p>
-                    <p class="category-card">${dataProduct[i].category}</p>
-                </div>
-                <span class="price-card">${dataProduct[i].price}</span>
-                <i onclick="deleteProduct(${i})" class='bx bxs-trash-alt' id="delete-item"></i>
-                <i onclick="updateProduct(${i})" class='bx bx-edit-alt' id="update-item"></i>
-                <i onclick="addProductToCart(${i})" class='bx bxs-cart-add' id="add-to-cart"></i>
-                </div>
-                
-                `
+                content += displayCard(dataProduct[i],i)
+
             }
         }
     }else{
         for(let i=0 ; i< dataProduct.length ; i++){
 
             if(dataProduct[i].price.includes(value.toLowerCase())){
-                content +=`
-        
-                <div class="card"> 
-                <img src="${dataProduct[i].img}" alt="img" id="img-card"> 
-                <h3 class="title-card">${dataProduct[i].title}</h3>
-                <div class="details-card">
-                    <p class="description-card">${dataProduct[i].description} </p>
-                    <p class="category-card">${dataProduct[i].category}</p>
-                </div>
-                <span class="price-card">${dataProduct[i].price}</span>
-                <i onclick="deleteProduct(${i})" class='bx bxs-trash-alt' id="delete-item"></i>
-                <i onclick="updateProduct(${i})" class='bx bx-edit-alt' id="update-item"></i>
-                <i onclick="addProductToCart(${i})" class='bx bxs-cart-add' id="add-to-cart"></i>
-                </div>
-                
-                `
+                content += displayCard(dataProduct[i],i)
+
             }
         }
 
